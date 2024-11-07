@@ -1,0 +1,31 @@
+version: "3"
+services:
+    ansible:
+        build: ansible
+        container_name: ansible
+        networks:
+            - ansible
+    server1:
+        build: server
+        ports:
+            - "2223:22"
+        hostname: server1
+        networks:
+            - ansible
+    server2:
+        build: server
+        ports:
+            - "2224:22"
+        hostname: server2
+        networks:
+            - ansible
+    server3:
+        build: server
+        ports:
+            - "2225:22"
+        hostname: server3
+        networks:
+            - ansible
+networks:
+    ansible:
+        driver: "bridge"
