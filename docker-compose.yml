@@ -5,10 +5,13 @@ services:
         container_name: ansible
         networks:
             - ansible
+        volumes:
+            - ./playground:/playground
     server1:
         build: server
         ports:
             - "2223:22"
+            - "8083:8083"
         hostname: server1
         networks:
             - ansible
@@ -16,6 +19,7 @@ services:
         build: server
         ports:
             - "2224:22"
+            - "8084:8084"
         hostname: server2
         networks:
             - ansible
@@ -23,6 +27,7 @@ services:
         build: server
         ports:
             - "2225:22"
+            - "8085:8085"
         hostname: server3
         networks:
             - ansible
